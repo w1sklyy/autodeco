@@ -21,6 +21,7 @@ jobs:
           echo "Using $NDK"
           sudo rm -rf /usr/local/lib/android/sdk/ndk/29*
           sudo mkdir -p /usr/local/lib/android/sdk/ndk
+          sudo ln -sfn "$NDK" /usr/local/lib/android/sdk/ndk/29.0.14206865
           sudo ln -sfn "$NDK" /usr/local/lib/android/sdk/ndk/27.2.12479018
           ls -la /usr/local/lib/android/sdk/ndk
           {
