@@ -1,0 +1,10 @@
+{
+	"geode": "4.6.0",
+	"gd": { "win": "2.2074", "android": "2.2074", "mac": "2.2074", "ios": "2.2074" },
+	"id": "autodeco.autodeco",
+	"name": "AutoDeco",
+	"version": "v1.0.0",
+	"developer": "AutoDeco",
+	"description": "Automatic level decoration in the editor with 10 styles and background lyrics.",
+	"tags": ["editor", "enhancement", "utility"]
+}
