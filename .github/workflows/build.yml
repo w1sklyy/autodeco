@@ -15,10 +15,20 @@ jobs:
         with:
           ndk-version: r27c
           add-to-path: false
+      - name: Force NDK 27
+        run: |
+          NDK="${{ steps.ndk.outputs.ndk-path }}"
+          echo "Using $NDK"
+          sudo rm -rf /usr/local/lib/android/sdk/ndk/29*
+          sudo mkdir -p /usr/local/lib/android/sdk/ndk
+          sudo ln -sfn "$NDK" /usr/local/lib/android/sdk/ndk/27.2.12479018
+          ls -la /usr/local/lib/android/sdk/ndk
+          {
+            echo "ANDROID_NDK_HOME=$NDK"
+            echo "ANDROID_NDK_ROOT=$NDK"
+            echo "ANDROID_NDK_LATEST_HOME=$NDK"
+            echo "ANDROID_NDK=$NDK"
+          } >> "$GITHUB_ENV"
       - uses: geode-sdk/build-geode-mod@main
-        env:
-          ANDROID_NDK_HOME: ${{ steps.ndk.outputs.ndk-path }}
-          ANDROID_NDK_ROOT: ${{ steps.ndk.outputs.ndk-path }}
-          ANDROID_NDK_LATEST_HOME: ${{ steps.ndk.outputs.ndk-path }}
         with:
           target: Android64
